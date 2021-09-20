@@ -1,4 +1,4 @@
 
-public class PacMan {
+public class PacMan extends Entity {
 
 }
