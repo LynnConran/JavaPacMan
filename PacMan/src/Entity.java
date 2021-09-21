@@ -22,7 +22,7 @@ public class Entity {
 		return y;
 	}
 	
-	public void move()
+	public void moveCoordinates()
 	{
 		if (dir == RIGHT)
 			x += MOVEDISTANCE;
@@ -41,4 +41,28 @@ public class Entity {
 		return false;
 	}
 	
+	public void move()
+	{
+		if (x % 1 == 0 || y % 1 == 0)
+		{
+			if (dir == RIGHT && Grid.getGrid((int)x + 1, (int)y) >= 0)
+			{
+				moveCoordinates();
+			}
+			else if (dir == UP && Grid.getGrid((int)x, (int)y - 1) >= 0)
+			{
+				moveCoordinates();
+			}
+			else if (dir == LEFT && Grid.getGrid((int)x - 1, (int)y) >= 0)
+			{
+				moveCoordinates();
+			}
+			else if (dir == DOWN && Grid.getGrid((int)x, (int)y + 1) >= 0)
+			{
+				moveCoordinates();
+			}
+		}
+		else
+			moveCoordinates();
+	}
 }
