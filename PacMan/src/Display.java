@@ -7,7 +7,7 @@ public class Display {
 		JFrame frame = new JFrame();
 		Painter painter = new Painter();
 		frame.add(painter);
-		frame.setSize(1000,1000);
+		frame.setSize(Painter.PIXELS * 29 - 16,Painter.PIXELS * 30 + 7);
 		frame.setVisible(true);
 	}
 }

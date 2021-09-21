@@ -2,18 +2,26 @@ import java.awt.*;
 
 public class Painter extends Canvas{
 	
-	private final static int PIXELS = 30;
+	public final static int PIXELS = 30;
 
 	public void paint(Graphics g) {
 		for (int y = 0; y < Grid.getGridLengthY(); y++)
 		{
 			for (int x = 0; x < Grid.getGridLengthX(); x++)
 			{
-				if (Grid.getGrid(x, y) >= 0)
+				int curGrid = Grid.getGrid(x, y);
+				if (curGrid >= 0)
 					g.setColor(Color.BLACK);
-				else
+				else if (curGrid == -1)
 					g.setColor(Color.BLUE);
-				g.fillRect(x * PIXELS, y * PIXELS, (x + 1)* PIXELS, (y + 1) * PIXELS);
+				else
+					g.setColor(Color.MAGENTA);
+				g.fillRect(x * PIXELS, y * PIXELS, PIXELS, PIXELS);
+				if (Grid.getGrid(x, y) == 1)
+				{
+					g.setColor(Color.WHITE);
+					g.fillRect((x * PIXELS) + (PIXELS / 2) - (PIXELS / 10), (y * PIXELS) + (PIXELS / 2) - (PIXELS / 10), PIXELS / 5, PIXELS / 5); 
+				}
 			}
 		}
 	}
