@@ -35,7 +35,6 @@ public class Display implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		System.out.println("Key hit!");
 		if (e.getKeyCode() == 37) // Left
 		{
 			painter.pac.setDir(Entity.LEFT);
@@ -44,11 +43,11 @@ public class Display implements KeyListener{
 		{
 			painter.pac.setDir(Entity.UP);
 		}
-		else if (e.getKeyCode() == 37) // Right
+		else if (e.getKeyCode() == 39) // Right
 		{
 			painter.pac.setDir(Entity.RIGHT);
 		}
-		else if (e.getKeyCode() == 37) // Down
+		else if (e.getKeyCode() == 40) // Down
 		{
 			painter.pac.setDir(Entity.DOWN);
 		}
