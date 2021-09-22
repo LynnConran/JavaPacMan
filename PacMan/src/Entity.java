@@ -3,6 +3,7 @@ public class Entity {
 
 	private double x;
 	private double y;
+	private int dir;
 	
 	final static double MOVEDISTANCE = 0.1;
 	final static double COLLISIONDISTANCE = 0.5;
@@ -10,16 +11,36 @@ public class Entity {
 	final static int UP = 1;
 	final static int LEFT = 2;
 	final static int DOWN = 3;
-	private int dir;
 	
-	public double get_x()
+	
+	public double getX()
 	{
 		return x;
 	}
 	
-	public double get_y()
+	public double getY()
 	{
 		return y;
+	}
+	
+	public void setX(double val)
+	{
+		x = val;
+	}
+	
+	public void setY(double val)
+	{
+		y = val;
+	}
+	
+	public int getDir()
+	{
+		return dir;
+	}
+	
+	public void setDir(int val)
+	{
+		dir = val;
 	}
 	
 	public void moveCoordinates()
@@ -36,28 +57,28 @@ public class Entity {
 	
 	public boolean checkCollision(Entity e)
 	{
-		if (Math.abs(e.get_y() - y) <= COLLISIONDISTANCE && Math.abs(e.get_x() - x) <= COLLISIONDISTANCE)
+		if (Math.abs(e.getY() - y) <= COLLISIONDISTANCE && Math.abs(e.getX() - x) <= COLLISIONDISTANCE)
 			return true;
 		return false;
 	}
 	
 	public void move()
 	{
-		if (x % 1 == 0 || y % 1 == 0)
+		if ((x % 1 > 0.9 || x % 1 < 0.1) && (y % 1 > 0.9 || y % 1 < 0.1))
 		{
-			if (dir == RIGHT && Grid.getGrid((int)x + 1, (int)y) >= 0)
+			if (dir == RIGHT && Grid.getGrid((int)Math.rint(x) + 1, (int)Math.rint(y)) >= 0)
 			{
 				moveCoordinates();
 			}
-			else if (dir == UP && Grid.getGrid((int)x, (int)y - 1) >= 0)
+			else if (dir == UP && Grid.getGrid((int)Math.rint(x), (int)Math.rint(y) - 1) >= 0)
 			{
 				moveCoordinates();
 			}
-			else if (dir == LEFT && Grid.getGrid((int)x - 1, (int)y) >= 0)
+			else if (dir == LEFT && Grid.getGrid((int)Math.rint(x) - 1, (int)Math.rint(y)) >= 0)
 			{
 				moveCoordinates();
 			}
-			else if (dir == DOWN && Grid.getGrid((int)x, (int)y + 1) >= 0)
+			else if (dir == DOWN && Grid.getGrid((int)Math.rint(x), (int)Math.rint(y) + 1) >= 0)
 			{
 				moveCoordinates();
 			}
