@@ -4,8 +4,9 @@ public class Entity {
 	private double x;
 	private double y;
 	private int dir;
+	private double moveDistance = 0.15;
 	
-	final static double MOVEDISTANCE = 0.1;
+	
 	final static double COLLISIONDISTANCE = 0.5;
 	final static int RIGHT = 0;
 	final static int UP = 1;
@@ -43,16 +44,21 @@ public class Entity {
 		dir = val;
 	}
 	
+	public void setDist(double val)
+	{
+		moveDistance = val;
+	}
+	
 	public void moveCoordinates()
 	{
 		if (dir == RIGHT)
-			x += MOVEDISTANCE;
+			x += moveDistance;
 		else if (dir == UP)
-			y -= MOVEDISTANCE;
+			y -= moveDistance;
 		else if (dir == LEFT)
-			x -= MOVEDISTANCE;
+			x -= moveDistance;
 		else if (dir == DOWN)
-			y += MOVEDISTANCE;
+			y += moveDistance;
 	}
 	
 	public boolean checkCollision(Entity e)

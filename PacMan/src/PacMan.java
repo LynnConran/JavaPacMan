@@ -7,6 +7,7 @@ public class PacMan extends Entity {
 	{
 		super.setX(13);
 		super.setY(21);
+		super.setDist(0.2);
 		super.setDir(RIGHT);
 		dirStorage = RIGHT;
 	}
@@ -41,6 +42,13 @@ public class PacMan extends Entity {
 					super.setDir(dirStorage);
 			}
 		}
+		chomp();
 		super.move();
+	}
+	
+	public void chomp()
+	{
+		if (Grid.getGrid((int)Math.rint(super.getX()), (int)Math.rint(super.getY())) > 0)
+			Grid.setGrid((int)Math.rint(super.getX()), (int)Math.rint(super.getY()), 0);
 	}
 }

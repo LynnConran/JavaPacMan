@@ -27,7 +27,7 @@ public class Display implements KeyListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		Timer timer = new Timer(100, actionPerformer);
+		Timer timer = new Timer(43, actionPerformer);
 		timer.start();
 	}
 
